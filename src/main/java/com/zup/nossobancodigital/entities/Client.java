@@ -1,7 +1,6 @@
 package com.zup.nossobancodigital.entities;
 
 import java.io.Serializable;
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,10 +8,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+import com.zup.nossobancodigital.config.validation.CpfConstraint;
+import com.zup.nossobancodigital.config.validation.DateFormatConstraint;
+import com.zup.nossobancodigital.config.validation.EmailConstraint;
+
 @Entity
-@Table(name = "client")
+@Table(name = "tb_client")
 public class Client implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
@@ -20,26 +24,30 @@ public class Client implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	@NotNull @NotEmpty
 	@Column(name = "first_name")
-	@NotNull
 	private String firstName;
 	
+	@NotNull @NotEmpty
 	@Column(name = "last_name")
-	@NotNull
 	private String lastName;
 	
-	@NotNull
+	@EmailConstraint
+	@Column(unique = true)
 	private String email;
 	
+	@DateFormatConstraint
 	@Column(name = "birth_date")
-	private Date birthDate;
+	private String birthDate;
 	
+	@CpfConstraint
+	@Column(unique = true)
 	private String cpf;
 	
 	public Client() {
 	}
 
-	public Client(Long id, String firstName, String lastName, String email, Date birthDate, String cpf) {
+	public Client(Long id, String firstName, String lastName, String email, String birthDate, String cpf) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
@@ -81,11 +89,11 @@ public class Client implements Serializable{
 		this.email = email;
 	}
 
-	public Date getBirthDate() {
+	public String getBirthDate() {
 		return birthDate;
 	}
 
-	public void setBirthDate(Date birthDate) {
+	public void setBirthDate(String birthDate) {
 		this.birthDate = birthDate;
 	}
 

@@ -1,9 +1,5 @@
 package com.zup.nossobancodigital;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -23,13 +19,6 @@ class NossoBancoDigitalApplicationTests {
 
 	@Test
 	public void passTestPostComplete() {
-		try {
-			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-			Date dateBirth;
-			dateBirth = sdf.parse("28/05/1986");
-			service.insert(new Client(null, "Douglas", "Cogubum", "doug.cogubum@gmail.com", dateBirth, "35343376894"));
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
+		service.insert(new Client(null, "Douglas", "Cogubum", "doug.cogubum@gmail.com", "28/05/1986", "35343376894"));
 	}
 }

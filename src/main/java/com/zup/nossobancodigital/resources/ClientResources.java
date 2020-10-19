@@ -3,6 +3,7 @@ package com.zup.nossobancodigital.resources;
 import java.net.URI;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,17 +17,19 @@ import com.zup.nossobancodigital.entities.Client;
 import com.zup.nossobancodigital.services.ClientService;
 
 @RestController
-@RequestMapping(value = "/client")
+@RequestMapping(value = "/clients")
 public class ClientResources {
 
 	@Autowired
 	private ClientService service;
 	
 	@PostMapping
-	public ResponseEntity<Client> insert( @RequestBody Client client, HttpServletRequest request) {
+	public ResponseEntity<Client> insert(@RequestBody @Valid Client client, HttpServletRequest request) {
 		client = service.insert(client);
+			
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/id").buildAndExpand(client.getId()).toUri();
 		URI location = ServletUriComponentsBuilder.fromServletMapping(request).path("/address").buildAndExpand(client.getId()).toUri();
+			
 		return ResponseEntity.created(uri).location(location).build();
 	}
 }
