@@ -14,7 +14,7 @@ public class ResourceExceptionHandler {
 	
 	@ExceptionHandler(ResourceException.class)
 	public ResponseEntity<StandardError> duplicateField(ResourceException e, HttpServletRequest request) {
-		String error = "Duplicated field error";
+		String error = "Field error";
 		HttpStatus status = HttpStatus.BAD_REQUEST;
 		StandardError err = new StandardError(Instant.now(),status.value(), error, e.getMessage(), request.getRequestURI());
 		

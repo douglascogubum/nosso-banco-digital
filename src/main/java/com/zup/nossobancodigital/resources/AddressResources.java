@@ -13,22 +13,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.zup.nossobancodigital.entities.Client;
-import com.zup.nossobancodigital.services.ClientService;
+import com.zup.nossobancodigital.entities.Address;
+import com.zup.nossobancodigital.services.AddressService;
 
 @RestController
-@RequestMapping(value = "/client")
-public class ClientResources {
+@RequestMapping(value = "/address")
+public class AddressResources {
 
 	@Autowired
-	private ClientService service;
+	private AddressService service;
 	
 	@PostMapping
-	public ResponseEntity<Client> insert(@RequestBody @Valid Client client, HttpServletRequest request) {
-		client = service.insert(client);
+	public ResponseEntity<Address> insert(@RequestBody @Valid Address Address, HttpServletRequest request) {
+		Address = service.insert(Address);
 			
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/id").buildAndExpand(client.getId()).toUri();
-		URI location = ServletUriComponentsBuilder.fromServletMapping(request).path("/address/{id}").buildAndExpand(client.getId()).toUri();
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/id").buildAndExpand(Address.getId()).toUri();
+		URI location = ServletUriComponentsBuilder.fromServletMapping(request).path("/upload/{id}").buildAndExpand(Address.getId()).toUri();
 			
 		return ResponseEntity.created(uri).location(location).build();
 	}

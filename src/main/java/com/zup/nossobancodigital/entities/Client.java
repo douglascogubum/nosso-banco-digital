@@ -2,15 +2,18 @@ package com.zup.nossobancodigital.entities;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.zup.nossobancodigital.config.validation.CpfConstraint;
 import com.zup.nossobancodigital.config.validation.DateFormatConstraint;
 import com.zup.nossobancodigital.config.validation.EmailConstraint;
@@ -43,6 +46,9 @@ public class Client implements Serializable{
 	@CpfConstraint
 	@Column(unique = true)
 	private String cpf;
+	
+	@OneToOne(cascade = CascadeType.ALL, mappedBy = "client")
+	private Address address;
 	
 	public Client() {
 	}
@@ -103,6 +109,15 @@ public class Client implements Serializable{
 
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
+	}
+
+	@JsonIgnore
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 
 	@Override

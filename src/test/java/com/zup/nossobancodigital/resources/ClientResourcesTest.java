@@ -27,7 +27,7 @@ class ClientResourcesTest {
 	
 	@Test	
 	public void successCase() throws Exception {
-		URI uri = new URI("/clients");
+		URI uri = new URI("/client");
 		String json = "{\"firstName\":\"Douglas\","
 				+ "\"lastName\":\"Cogubum\","
 				+ "\"email\":\"doug.cogubum@gmail.com\","
@@ -46,7 +46,7 @@ class ClientResourcesTest {
 	
 	@Test	
 	public void emptyFirstName() throws Exception {
-		URI uri = new URI("/clients");
+		URI uri = new URI("/client");
 		String json = "{\"firstName\":\"\","
 				+ "\"lastName\":\"Cogubum\","
 				+ "\"email\":\"doug.cogubum@gmail.com\","
@@ -67,7 +67,7 @@ class ClientResourcesTest {
 	
 	@Test	
 	public void emptyLastName() throws Exception {
-		URI uri = new URI("/clients");
+		URI uri = new URI("/client");
 		String json = "{\"firstName\":\"Douglas\","
 				+ "\"lastName\":\"\","
 				+ "\"email\":\"doug.cogubum@gmail.com\","
@@ -88,7 +88,7 @@ class ClientResourcesTest {
 	
 	@Test	
 	public void emptyEmail() throws Exception {
-		URI uri = new URI("/clients");
+		URI uri = new URI("/client");
 		String json = "{\"firstName\":\"Douglas\","
 				+ "\"lastName\":\"Cogubum\","
 				+ "\"email\":\"\","
@@ -109,7 +109,7 @@ class ClientResourcesTest {
 	
 	@Test	
 	public void emptyDate() throws Exception {
-		URI uri = new URI("/clients");
+		URI uri = new URI("/client");
 		String json = "{\"firstName\":\"Douglas\","
 				+ "\"lastName\":\"Cogubum\","
 				+ "\"email\":\"doug.cogubum@gmail.com\","
@@ -130,7 +130,7 @@ class ClientResourcesTest {
 	
 	@Test	
 	public void wrongFormatDate() throws Exception {
-		URI uri = new URI("/clients");
+		URI uri = new URI("/client");
 		String json = "{\"firstName\":\"Douglas\","
 				+ "\"lastName\":\"Cogubum\","
 				+ "\"email\":\"doug.cogubum@gmail.com\","
@@ -151,7 +151,7 @@ class ClientResourcesTest {
 	
 	@Test	
 	public void futureDate() throws Exception {
-		URI uri = new URI("/clients");
+		URI uri = new URI("/client");
 		String json = "{\"firstName\":\"Douglas\","
 				+ "\"lastName\":\"Cogubum\","
 				+ "\"email\":\"doug.cogubum@gmail.com\","
@@ -172,7 +172,7 @@ class ClientResourcesTest {
 	
 	@Test	
 	public void underEighteenDate() throws Exception {
-		URI uri = new URI("/clients");
+		URI uri = new URI("/client");
 		String json = "{\"firstName\":\"Douglas\","
 				+ "\"lastName\":\"Cogubum\","
 				+ "\"email\":\"doug.cogubum@gmail.com\","
@@ -193,7 +193,7 @@ class ClientResourcesTest {
 	
 	@Test	
 	public void invalidFormatCpf() throws Exception {
-		URI uri = new URI("/clients");
+		URI uri = new URI("/client");
 		String json = "{\"firstName\":\"Douglas\","
 				+ "\"lastName\":\"Cogubum\","
 				+ "\"email\":\"doug.cogubum@gmail.com\","
@@ -214,7 +214,7 @@ class ClientResourcesTest {
 	
 	@Test	
 	public void invalidCpf() throws Exception {
-		URI uri = new URI("/clients");
+		URI uri = new URI("/client");
 		String json = "{\"firstName\":\"Douglas\","
 				+ "\"lastName\":\"Cogubum\","
 				+ "\"email\":\"doug.cogubum@gmail.com\","
@@ -235,7 +235,7 @@ class ClientResourcesTest {
 	
 	@Test	
 	public void duplicateEmail() throws Exception {
-		URI uri = new URI("/clients");
+		URI uri = new URI("/client");
 		String json = "{\"firstName\":\"Douglas\","
 				+ "\"lastName\":\"Cogubum\","
 				+ "\"email\":\"doug.cogubum@gmail.com\","
@@ -266,7 +266,7 @@ class ClientResourcesTest {
 	
 	@Test	
 	public void duplicateCpf() throws Exception {
-		URI uri = new URI("/clients");
+		URI uri = new URI("/client");
 		String json = "{\"firstName\":\"Douglas\","
 				+ "\"lastName\":\"Cogubum\","
 				+ "\"email\":\"doug.cogubum@gmail.com\","
